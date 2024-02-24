@@ -14,6 +14,7 @@ public final class LinkValidatorManager {
         return validators;
     }
 
+    @Autowired
     public LinkValidatorManager(List<LinkValidator> validators) {
         this.validators = validators;
     }
