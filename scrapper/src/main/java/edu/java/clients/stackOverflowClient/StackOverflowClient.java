@@ -12,28 +12,35 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriBuilder;
 import java.util.Optional;
+
 @Component
 public class StackOverflowClient implements JsonParser<StackOverflowResponse> {
     private final WebClient webClient;
     private static final String BASE_URL = "https://api.stackexchange.com/2.3/questions";
 
     private static final String requestParam = "?order=desc&sort=activity&site=stackoverflow";
-    public StackOverflowClient(){
+
+    public StackOverflowClient() {
         webClient = ClientMaker.getWebClient(BASE_URL);
     }
-    public StackOverflowClient(String baseURL){
+
+    public StackOverflowClient(String baseURL) {
         webClient = ClientMaker.getWebClient(baseURL);
     }
 
-    public Optional<StackOverflowResponse> fetchQuestion(long questionID){
-        String data = webClient.get()
-            .uri("/{id}" + requestParam, questionID)
-            //.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-            .retrieve()
-            .bodyToMono(String.class)
-            .block();
-        return Optional.of(convertJsonToObject(data));
+    public Optional<StackOverflowResponse> fetchQuestion(long questionID) {
+        try {
+            String data = webClient.get()
+                .uri("/{id}" + requestParam, questionID)
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+            return Optional.of(convertJsonToObject(data));
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
+
     @Override
     public StackOverflowResponse convertJsonToObject(String data) {
         ObjectMapper mapper = new ObjectMapper()

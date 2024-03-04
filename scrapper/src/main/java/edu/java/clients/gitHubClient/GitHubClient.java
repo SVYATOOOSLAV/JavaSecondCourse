@@ -25,15 +25,22 @@ public class GitHubClient implements JsonParser<GitHubResponse> {
     public GitHubClient(String baseURL) {
         webClient = ClientMaker.getWebClient(baseURL);
     }
-    public Optional<GitHubResponse> fetchRepository(String repoOwner, String repoName) {
-        String data = webClient.get()
-            .uri(String.format("/%s/%s", repoOwner, repoName))
-            .retrieve()
-            .bodyToMono(String.class)
-            .block();
 
-        return Optional.of(convertJsonToObject(data));
+    public Optional<GitHubResponse> fetchRepository(String repoOwner, String repoName) {
+        try {
+            String data = webClient.get()
+                .uri(String.format("/%s/%s", repoOwner, repoName))
+                .retrieve()
+                .bodyToMono(String.class)
+                .block();
+
+            return Optional.of(convertJsonToObject(data));
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+
     }
+
     @Override
     public GitHubResponse convertJsonToObject(String data) {
         ObjectMapper objectMapper = new ObjectMapper()

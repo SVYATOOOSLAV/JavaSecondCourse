@@ -25,11 +25,12 @@ public record StackOverflowResponse(
     String title
 
 ) {
-    record Owner(
+    public record Owner(
         @JsonProperty("profile_image")
         String profileImage,
         @JsonProperty("display_name")
         String displayName,
         String link
-    ){}
+    ) {
+    }
 }

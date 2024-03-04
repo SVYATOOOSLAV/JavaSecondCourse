@@ -27,14 +27,15 @@ public record GitHubResponse(
     String gitURL,
     String language
 ) {
-    record Owner(
+    public record Owner(
         String login,
         long id,
         @JsonProperty("avatar_url")
         String avatarURL,
         @JsonProperty("html_url")
         String htmlURL
-    ){}
+    ) {
+    }
 }
 
 
