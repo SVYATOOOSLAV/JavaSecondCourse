@@ -1,0 +1,39 @@
+{
+    "items": [
+        {
+            "tags": [
+                "java",
+                "c++",
+                "performance",
+                "cpu-architecture",
+                "branch-prediction"
+            ],
+            "owner": {
+                "account_id": 31692,
+                "reputation": 498424,
+                "user_id": 87234,
+                "user_type": "registered",
+                "accept_rate": 100,
+                "profile_image": "https://i.stack.imgur.com/FkjBe.png?s=256&g=1",
+                "display_name": "GManNickG",
+                "link": "https://stackoverflow.com/users/87234/gmannickg"
+            },
+            "is_answered": true,
+            "view_count": 1870715,
+            "protected_date": 1399067470,
+            "accepted_answer_id": 11227902,
+            "answer_count": 25,
+            "score": 27213,
+            "last_activity_date": 1709573833,
+            "creation_date": 1340805096,
+            "last_edit_date": 1701123268,
+            "question_id": 11227809,
+            "content_license": "CC BY-SA 4.0",
+            "link": "https://stackoverflow.com/questions/11227809/why-is-processing-a-sorted-array-faster-than-processing-an-unsorted-array",
+            "title": "Why is processing a sorted array faster than processing an unsorted array?"
+        }
+    ],
+    "has_more": false,
+    "quota_max": 10000,
+    "quota_remaining": 9941
+}
