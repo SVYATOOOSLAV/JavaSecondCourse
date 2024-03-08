@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @ConditionalOnProperty(value = "app.scheduler.enable", havingValue = "true")
 public class LinkUpdaterScheduler {
     private static final Logger LOGGER = LogManager.getLogger(LinkUpdaterScheduler.class.getName());
-    @Scheduled(fixedDelayString = "#{@scheduler.interval}")
+    @Scheduled(fixedDelayString = "#{@scheduler.interval()}")
     public void update(){
         LOGGER.info("updated");
     }
