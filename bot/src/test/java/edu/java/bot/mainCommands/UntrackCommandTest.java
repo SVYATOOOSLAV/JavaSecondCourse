@@ -1,12 +1,12 @@
 package edu.java.bot.mainCommands;
 
 import com.pengrad.telegrambot.request.SendMessage;
-import edu.java.bot.commands.mainCommands.TrackCommand;
-import edu.java.bot.commands.mainCommands.UntrackCommand;
+import edu.java.bot.model.commands.mainCommands.TrackCommand;
+import edu.java.bot.model.commands.mainCommands.UntrackCommand;
 import edu.java.bot.dao.DataBase;
-import edu.java.bot.linkvalidators.LinkValidatorManager;
-import edu.java.bot.linkvalidators.baseValidators.GitHubValidator;
-import edu.java.bot.linkvalidators.baseValidators.StackOverflowValidator;
+import edu.java.bot.model.linkvalidators.LinkValidatorManager;
+import edu.java.bot.model.linkvalidators.baseValidators.GitHubValidator;
+import edu.java.bot.model.linkvalidators.baseValidators.StackOverflowValidator;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;

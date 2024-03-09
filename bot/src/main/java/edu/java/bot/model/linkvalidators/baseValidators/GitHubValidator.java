@@ -1,9 +1,7 @@
-package edu.java.bot.linkvalidators.baseValidators;
+package edu.java.bot.model.linkvalidators.baseValidators;
 
-import edu.java.bot.linkvalidators.LinkValidator;
+import edu.java.bot.model.linkvalidators.LinkValidator;
 import lombok.NoArgsConstructor;
-
-import java.net.URI;
 
 @NoArgsConstructor
 public class GitHubValidator implements LinkValidator {

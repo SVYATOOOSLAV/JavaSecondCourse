@@ -1,4 +1,4 @@
-package edu.java.bot.linkvalidators;
+package edu.java.bot.model.linkvalidators;
 
 import java.net.URI;
 

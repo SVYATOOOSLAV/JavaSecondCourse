@@ -1,12 +1,7 @@
 package edu.java.bot.mainCommands;
 
-import edu.java.bot.commands.mainCommands.ListCommand;
-import edu.java.bot.commands.mainCommands.StartCommand;
-import edu.java.bot.commands.mainCommands.TrackCommand;
+import edu.java.bot.model.commands.mainCommands.ListCommand;
 import edu.java.bot.dao.DataBase;
-import edu.java.bot.linkvalidators.LinkValidatorManager;
-import edu.java.bot.linkvalidators.baseValidators.GitHubValidator;
-import edu.java.bot.linkvalidators.baseValidators.StackOverflowValidator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import java.net.URI;

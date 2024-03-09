@@ -1,4 +1,4 @@
-package edu.java.bot.linkvalidators;
+package edu.java.bot.model.linkvalidators;
 
 public class ValidatorFactory {
     public static LinkValidator create (String hostName){

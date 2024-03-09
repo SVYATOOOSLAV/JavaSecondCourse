@@ -1,6 +1,6 @@
 package edu.java.bot.Validators;
 
-import edu.java.bot.linkvalidators.baseValidators.StackOverflowValidator;
+import edu.java.bot.model.linkvalidators.baseValidators.StackOverflowValidator;
 import org.junit.jupiter.api.Test;
 import java.net.URI;
 import static org.junit.jupiter.api.Assertions.assertFalse;

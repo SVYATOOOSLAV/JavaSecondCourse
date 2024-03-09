@@ -1,9 +1,8 @@
 package edu.java.bot.mainCommands;
 
-import edu.java.bot.commands.mainCommands.StartCommand;
+import edu.java.bot.model.commands.mainCommands.StartCommand;
 import edu.java.bot.dao.DataBase;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

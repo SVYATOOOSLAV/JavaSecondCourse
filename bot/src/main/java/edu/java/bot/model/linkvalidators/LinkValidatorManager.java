@@ -1,12 +1,11 @@
-package edu.java.bot.linkvalidators;
+package edu.java.bot.model.linkvalidators;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
+@Component
 public final class LinkValidatorManager {
     private List<LinkValidator> validators;
 

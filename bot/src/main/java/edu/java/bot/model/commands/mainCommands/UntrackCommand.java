@@ -1,17 +1,14 @@
-package edu.java.bot.commands.mainCommands;
+package edu.java.bot.model.commands.mainCommands;
 
 import com.pengrad.telegrambot.request.SendMessage;
-import edu.java.bot.commands.Command;
+import edu.java.bot.model.commands.Command;
 import edu.java.bot.dao.DataBase;
-import edu.java.bot.linkvalidators.LinkValidatorManager;
-import lombok.RequiredArgsConstructor;
+import edu.java.bot.model.linkvalidators.LinkValidatorManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Component
 public class UntrackCommand implements Command {
