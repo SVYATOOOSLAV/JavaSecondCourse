@@ -1,4 +1,4 @@
-package edu.java.clients.gitHubClient;
+package edu.java.model.clients.gitHubClient;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URL;

@@ -1,16 +1,13 @@
-package edu.java.clients.stackOverflowClient;
+package edu.java.model.clients.stackOverflowClient;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import edu.java.clients.ClientMaker;
-import edu.java.clients.JsonParser;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import edu.java.model.clients.ClientMaker;
+import edu.java.model.clients.JsonParser;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriBuilder;
 import java.util.Optional;
 
 @Component

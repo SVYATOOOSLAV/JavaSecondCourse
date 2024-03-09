@@ -1,7 +1,6 @@
 package edu.java.controllers;
 
 import edu.java.model.DataBaseConnectionService;
-import edu.java.model.dto.TransactionConfirmationStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,17 +19,13 @@ public class UserApiController implements UserApi {
     @Override
     public ResponseEntity<?> createUserInSystem(@PathVariable("id") long id) {
         service.createUser(id);
-        return new ResponseEntity<>(new TransactionConfirmationStatus(HttpStatus.OK.value(),
-            "User with id " + id + " was created"),
-            HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override
     public ResponseEntity<?> deleteUserFromSystem(@PathVariable("id") long id) {
         service.deleteUser(id);
-        return new ResponseEntity<>(new TransactionConfirmationStatus(HttpStatus.OK.value(),
-            "User with id " + id + " was deleted"),
-            HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }

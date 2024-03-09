@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 @Service
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -15,7 +14,7 @@ public class DateBase {
     public static void createUser(Long userID){
         DATABASE.put(userID, new ArrayList<>());
     }
-    public static void addURIToUser(Long userID, URI link){
+    public static void addLinkToUser(Long userID, URI link){
         List<URI> resources = DATABASE.get(userID);
         resources.add(link);
         DATABASE.put(userID, resources);
@@ -27,7 +26,7 @@ public class DateBase {
         previousTrackList.addAll(newLinks);
         DATABASE.put(userID, previousTrackList);
     }
-    public static void removeURIFromUser(Long userID, URI link){
+    public static void removeLinkFromUser(Long userID, URI link){
         List<URI> resources = DATABASE.get(userID);
         resources.remove(link);
         DATABASE.put(userID, resources);
@@ -38,7 +37,7 @@ public class DateBase {
         DATABASE.put(userID, currentlyLinks);
     }
 
-    public static void clearListForUser(Long userID){
+    public static void deleteUser(Long userID){
         DATABASE.remove(userID);
     }
 

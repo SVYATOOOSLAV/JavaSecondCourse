@@ -55,6 +55,7 @@
     <modules>
         <module>bot</module>
         <module>scrapper</module>
+        <module>dto</module>
     </modules>
 
     <dependencyManagement>

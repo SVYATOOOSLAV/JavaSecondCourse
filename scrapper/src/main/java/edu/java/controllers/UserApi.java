@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/chat")
+@RequestMapping("/tg-chat")
 public interface UserApi {
     @PostMapping("/{id}")
     ResponseEntity<?> createUserInSystem(@PathVariable("id") long id);

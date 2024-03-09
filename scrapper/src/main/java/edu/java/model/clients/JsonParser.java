@@ -1,4 +1,4 @@
-package edu.java.clients;
+package edu.java.model.clients;
 
 @FunctionalInterface
 public interface JsonParser <T> {

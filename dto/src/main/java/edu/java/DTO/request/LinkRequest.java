@@ -1,4 +1,4 @@
-package edu.java.model.dto;
+package edu.java.DTO.request;
 
 public record LinkRequest(String link) {
 }

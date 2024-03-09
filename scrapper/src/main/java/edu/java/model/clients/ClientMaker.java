@@ -1,4 +1,4 @@
-package edu.java.clients;
+package edu.java.model.clients;
 
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;

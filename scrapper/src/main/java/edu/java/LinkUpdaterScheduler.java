@@ -1,5 +1,6 @@
 package edu.java;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -9,11 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @EnableScheduling
+@Slf4j
 @ConditionalOnProperty(value = "app.scheduler.enable", havingValue = "true")
 public class LinkUpdaterScheduler {
-    private static final Logger LOGGER = LogManager.getLogger(LinkUpdaterScheduler.class.getName());
     @Scheduled(fixedDelayString = "#{@scheduler.interval()}")
     public void update(){
-        LOGGER.info("updated");
+        log.info("updated");
     }
 }
