@@ -4,17 +4,17 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+@Service
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class DataBase {
-    private static final Map<Long, List<URI>> DATABASE = new HashMap<>();
+public class DateBase {
+    private final static HashMap<Long, List<URI>> DATABASE = new HashMap<>();
     public static void createUser(Long userID){
         DATABASE.put(userID, new ArrayList<>());
     }
-
     public static void addURIToUser(Long userID, URI link){
         List<URI> resources = DATABASE.get(userID);
         resources.add(link);
@@ -27,7 +27,7 @@ public class DataBase {
         previousTrackList.addAll(newLinks);
         DATABASE.put(userID, previousTrackList);
     }
-    public static void removeURIToUser(Long userID, URI link){
+    public static void removeURIFromUser(Long userID, URI link){
         List<URI> resources = DATABASE.get(userID);
         resources.remove(link);
         DATABASE.put(userID, resources);
