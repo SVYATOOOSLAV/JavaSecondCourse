@@ -12,6 +12,7 @@ import edu.java.bot.model.linkvalidators.LinkValidator;
 import edu.java.bot.model.linkvalidators.LinkValidatorManager;
 import edu.java.bot.model.linkvalidators.baseValidators.StackOverflowValidator;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -45,5 +46,11 @@ public class BotConfig {
         @Qualifier("stackOverflowValidator") LinkValidator stackOverflowValidator
     ){
         return List.of(gitHubValidator, stackOverflowValidator);
+    }
+
+    @Bean
+    @Value("endpoints.scrapper")
+    String scrapperURL(String url){
+        return url;
     }
 }
