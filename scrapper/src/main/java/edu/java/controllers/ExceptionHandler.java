@@ -1,5 +1,6 @@
 package edu.java.controllers;
 
+import edu.java.DTO.exception.DataNotFoundException;
 import edu.java.DTO.exception.InvalidRequestException;
 import edu.java.DTO.response.ApiErrorResponse;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +31,27 @@ public class ExceptionHandler {
                     .toArray(String[]::new)
             ),
             HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @org.springframework.web.bind.annotation.ExceptionHandler(DataNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> catchDataNotFoundException(DataNotFoundException e) {
+        log.error(e.getMessage(), e);
+        String[] httpStatus = HttpStatus.NOT_FOUND.toString().split(" ");
+        String description = httpStatus[1];
+        String code = httpStatus[0];
+        return new ResponseEntity<>(
+            new ApiErrorResponse(
+                description,
+                code,
+                InvalidRequestException.class.getName(),
+                e.getMessage(),
+                Arrays.stream(e.getStackTrace())
+                    .map(StackTraceElement::toString)
+                    .toArray(String[]::new)
+            ),
+            HttpStatus.NOT_FOUND
         );
     }
 }

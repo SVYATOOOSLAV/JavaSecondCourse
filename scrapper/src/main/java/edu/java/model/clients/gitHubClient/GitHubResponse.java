@@ -1,11 +1,7 @@
 package edu.java.model.clients.gitHubClient;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.net.URL;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.OffsetDateTime;
-import java.time.ZoneOffset;
 
 public record GitHubResponse(
     long id,

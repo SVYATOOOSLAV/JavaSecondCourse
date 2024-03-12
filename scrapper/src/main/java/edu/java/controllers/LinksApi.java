@@ -18,8 +18,8 @@ public interface LinksApi {
     ResponseEntity<ListLinksResponse> getLinksFromUser(@RequestHeader("Tg-Chat-Id") long id);
 
     @PostMapping(produces = "application/json", consumes = "application/json")
-    ResponseEntity<LinkResponse> addLinkToUser(@PathVariable("id") long id, @RequestBody LinkRequest link);
+    ResponseEntity<LinkResponse> addLinkToUser(@RequestHeader("Tg-Chat-Id")  long id, @RequestBody LinkRequest link);
 
     @DeleteMapping(produces = "application/json", consumes = "application/json")
-    ResponseEntity<LinkResponse> deleteLinkFromUser(@PathVariable("id") long id, @RequestBody LinkRequest link);
+    ResponseEntity<LinkResponse> deleteLinkFromUser(@RequestHeader("Tg-Chat-Id")  long id, @RequestBody LinkRequest link);
 }

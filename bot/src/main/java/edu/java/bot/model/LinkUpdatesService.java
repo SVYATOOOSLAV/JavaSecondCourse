@@ -4,6 +4,7 @@ import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.request.SendMessage;
 import edu.java.DTO.exception.InvalidRequestException;
 import edu.java.DTO.request.LinkUpdate;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.net.URI;
@@ -11,7 +12,7 @@ import java.net.URISyntaxException;
 import java.util.Arrays;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class LinkUpdatesService {
     private final TelegramBot bot;
 

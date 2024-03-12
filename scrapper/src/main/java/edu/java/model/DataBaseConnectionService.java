@@ -6,7 +6,6 @@ import edu.java.DTO.exception.InvalidRequestException;
 import edu.java.DTO.response.LinkResponse;
 import edu.java.DTO.response.ListLinksResponse;
 import edu.java.dao.DateBase;
-
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -69,13 +68,13 @@ public class DataBaseConnectionService {
 
     private void userNotInSystemValidator(long id){
         if(DateBase.isUserInSystem(id)){
-            throw new InvalidRequestException ("User with ID" + id + "already exist");
+            throw new InvalidRequestException ("User with ID " + id + " already exist");
         }
     }
 
     private void userInSystemValidator(long id){
         if(!DateBase.isUserInSystem(id)){
-            throw new DataNotFoundException("User with ID" + id + "doesn't exist");
+            throw new DataNotFoundException("User with ID " + id + " doesn't exist");
         }
     }
 
@@ -83,7 +82,7 @@ public class DataBaseConnectionService {
         try {
             new URI(link);
         } catch (URISyntaxException e) {
-            throw new InvalidRequestException(link + "is invalid");
+            throw new InvalidRequestException(link + " is invalid");
         }
     }
 
