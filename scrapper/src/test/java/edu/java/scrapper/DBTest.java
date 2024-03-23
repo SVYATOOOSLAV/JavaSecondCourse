@@ -1,6 +1,7 @@
 package edu.java.scrapper;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class DBTest extends IntegrationTest{
     @Test
+    @DisplayName("Insert and Select row")
     void simpleTest() throws SQLException {
         int referentID = 1;
         String referentName = "testUser";

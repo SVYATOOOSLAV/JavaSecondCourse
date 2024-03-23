@@ -10,6 +10,7 @@ import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.DatabaseException;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
+import liquibase.resource.CompositeResourceAccessor;
 import liquibase.resource.DirectoryResourceAccessor;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
@@ -39,11 +40,11 @@ public abstract class IntegrationTest {
     }
 
     private static void runMigrations(JdbcDatabaseContainer<?> c) {
-        Path pathToMigrations = new File(".").toPath()
-            .toAbsolutePath()
+        Path pathToMigrations = Path.of(".")
+            .toAbsolutePath() //Сейчас на папке resources
             .getParent()
             .getParent()
-            .resolve(Path.of("db", "migrations"));
+            .resolve(Path.of("db", "migrations")); // спускаемся от корня проекта к миграциям
         try (Connection connection = DriverManager.getConnection(c.getJdbcUrl(), c.getUsername(), c.getPassword())) {
             Database dateBase = DatabaseFactory.getInstance()
                 .findCorrectDatabaseImplementation(new JdbcConnection(connection));
@@ -52,7 +53,7 @@ public abstract class IntegrationTest {
                 new DirectoryResourceAccessor(pathToMigrations),
                 dateBase
             );
-            liquibase.update(new Contexts(), new LabelExpression());
+            liquibase.update();
         } catch (SQLException | FileNotFoundException | LiquibaseException e) {
             throw new RuntimeException(e);
         }
