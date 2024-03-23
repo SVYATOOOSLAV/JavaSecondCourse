@@ -1,17 +1,34 @@
 package edu.java.scrapper;
 
+import edu.java.dao.DateBase;
+import liquibase.Contexts;
+import liquibase.LabelExpression;
+import liquibase.Liquibase;
+import liquibase.database.Database;
+import liquibase.database.DatabaseFactory;
+import liquibase.database.jvm.JdbcConnection;
+import liquibase.exception.DatabaseException;
+import liquibase.exception.LiquibaseException;
+import liquibase.resource.ClassLoaderResourceAccessor;
+import liquibase.resource.DirectoryResourceAccessor;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.JdbcDatabaseContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 @Testcontainers
 public abstract class IntegrationTest {
     public static PostgreSQLContainer<?> POSTGRES;
 
     static {
-        POSTGRES = new PostgreSQLContainer<>("postgres:15")
+        POSTGRES = new PostgreSQLContainer<>("postgres:16")
             .withDatabaseName("scrapper")
             .withUsername("postgres")
             .withPassword("postgres");
@@ -21,7 +38,20 @@ public abstract class IntegrationTest {
     }
 
     private static void runMigrations(JdbcDatabaseContainer<?> c) {
-        // ...
+        Path pathToMigrations = Path.of(".", "db", "migrations");
+        try (Connection connection = DriverManager.getConnection(c.getJdbcUrl(), c.getUsername(), c.getPassword())) {
+            Database dateBase = DatabaseFactory.getInstance()
+                .findCorrectDatabaseImplementation(new JdbcConnection(connection));
+            Liquibase liquibase = new Liquibase(
+                "master.xml",
+                new DirectoryResourceAccessor(pathToMigrations),
+                dateBase
+            );
+            liquibase.update(new Contexts(), new LabelExpression());
+        } catch (SQLException | FileNotFoundException | LiquibaseException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     @DynamicPropertySource
